@@ -10,15 +10,15 @@ import java.lang.Math;
 
 public class Map {
 
-	final int X_CELLS = 30;
-	final int Y_CELLS = 20;
-	final int CELL_WIDTH = 35;
+	final int X_CELLS = 32; //columns
+	final int Y_CELLS = 32; //rows
+	final int CELL_WIDTH = 20;
 	
 	final int WIDTH = X_CELLS*CELL_WIDTH;
 	final int HEIGHT = Y_CELLS*CELL_WIDTH;
 	
 	final double OBSTACLE_PRCTG = 20; //percentage of blocks which will be obstacles
-	final double SEGREGATION = 80;		//percentage of segregation (dispersion of the blocks in groups)
+	final double SEGREGATION = 0;		//percentage of segregation (dispersion of the blocks in groups)
 	
 	public Cell [][] map = new Cell[X_CELLS][Y_CELLS];
 	public Ventana v;
@@ -32,22 +32,47 @@ public class Map {
 		for (int i = 0; i< X_CELLS; i++){
 			for (int j = 0; j< Y_CELLS; j++){
 				map[i][j] = new Cell();
-				
 			}
 		}
+		for (int i = 0;i < X_CELLS; i++){
+			map[i][0].obstacle=true;
+			map[i][Y_CELLS-1].obstacle=true;
+			Integer[]limitdown={i,0};
+			Integer[]limitup={i,Y_CELLS};
+			this.obstacleCoordinates.add(limitup);
+			this.obstacleCoordinates.add(limitdown);
+		}
+		for (int i = 0;i < Y_CELLS; i++){
+			map[0][i].obstacle=true;
+			map[X_CELLS-1][i].obstacle=true;
+			Integer[]limitleft={0,i};
+			Integer[]limitright={X_CELLS,i};
+			this.obstacleCoordinates.add(limitleft);
+			this.obstacleCoordinates.add(limitright);
+		}
+		map[X_CELLS-1][Y_CELLS-1].obstacle=true;
+		Integer[]corner={X_CELLS,Y_CELLS};
+		this.obstacleCoordinates.add(corner);
+		
 		this.v = new Ventana("AI-Robot",WIDTH,HEIGHT);
 		v.actualizaFotograma();
 		v.setColorFondo(Color.black);
-		
-		v.setCamara(X_CELLS/2 +0.5, Y_CELLS/2, Y_CELLS); //-15.5,10
-		v.setDibujaCoordenadas(true);		
-		
-		obstacleSet();
+		//v.setCamara((X_CELLS+2)/2 -0.5, (Y_CELLS+2)/2 -1, X_CELLS+2); //-15.5,10
+		v.setCamara((X_CELLS+2)/2 -0.5, (Y_CELLS+2)/2 -1 ,Math.min(Y_CELLS +2,X_CELLS +2));
+		//v.setDibujaCoordenadas(true);		
+		//obstacleSet();
+		mazeSet();
 		v.actualizaFotograma();
+		
+		System.out.println("nº obstacles " + obstacleCoordinates.size());
 		
 		
 	}
-
+	public void mazeSet(){
+		MazeGenerator maze = new MazeGenerator(this);
+		maze.generate();
+		maze.show();
+	}
 	public void obstacleSet(){
 		int nObstacles = (int) (OBSTACLE_PRCTG/100.0*X_CELLS*Y_CELLS);
 		int groupSize = (int) ((1-nObstacles)*(SEGREGATION/100) + nObstacles);
@@ -106,7 +131,7 @@ public class Map {
 		return false;
 		
 	}
-	private void paintObst(){
+	public void paintObst(){
 		for (Integer[] pos : obstacleCoordinates){
 			v.dibujaRectangulo(pos[0], pos[1], 1, 1, Color.blue);
 		}
@@ -115,16 +140,21 @@ public class Map {
 class Cell {
 	boolean robot_here = false;
 	boolean obstacle = false; //true means that the cell is an obstacle
+	TypeOfCell type = TypeOfCell.FREE; 
 	char flag; // B = busy; V = visited and free; N= NOT visited and free;
 	
 	public Cell() {
 		super();
-	}
+		}
 	
 	
 	
 	
 }
+
+	enum TypeOfCell{
+		OBS,FREE
+	}
 }
 
 
