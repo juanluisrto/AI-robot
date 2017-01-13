@@ -11,18 +11,18 @@ import java.lang.Math;
 
 public class Map {
 	
-	public int width = 35; // columns
-	public int length = 25; // rows
-	final int CELL_WIDTH = 20;
+	public int width = 55; // columns
+	public int length = 55; // rows
+	final int CELL_WIDTH = 10;
 
 	final int WIDTH = width * CELL_WIDTH;
 	final int HEIGHT = length * CELL_WIDTH;
 
-	final double OBSTACLE_PRCTG = 30; // percentage of blocks which will be
+	final double OBSTACLE_PRCTG = 10; // percentage of blocks which will be
 	// obstacles
 	final double SEGREGATION = 80; // percentage of segregation (dispersion of
 	// the blocks in groups)
-	final boolean MAZE_MODE_ACTIVE = false; //plots a maze instead of a regular map. Not working properly yet.
+	final boolean MAZE_MODE_ACTIVE = true; //plots a maze instead of a regular map. Not working properly yet.
 
 	public Block[][] blocks = new Block[width][length];
 	public Ventana v;
