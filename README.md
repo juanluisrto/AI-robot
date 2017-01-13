@@ -2,6 +2,8 @@
 
 ##Project for the ID1214 Artificial Intelligence course at KTH
 
+######Authors: Nawfal AlShammari, Juan Luis Ruiz-Tagle Oriol
+
 The program creates a map and randomly plots obstacles into it. A robot is spawned with the goal to visit 
 all the reachable cells in the map in an efficient way. When it is done with all of them it will know and will stop running.
 
