@@ -20,21 +20,24 @@ __Example pictures__
 
 ####Example 1
 ![alt text][AI-robot1]
-![alt text][AI-robot2]
+
+![alt tag][AI-robot2]
 
 ####Example 2
 ![alt text][AI-robot3]
+
 ![alt text][AI-robot4]
 
 ####Maze
 ![alt text][AI-robot5]
+
 ![alt text][AI-robot6]
 
 
 
-[AI-robot1]: https://github.com/juanluisrto/AI-robot/tree/master/bin/images/AI-robot1.PNG
-[AI-robot2]: https://github.com/juanluisrto/AI-robot/tree/master/bin/images/AI-robot2.PNG
-[AI-robot3]: https://github.com/juanluisrto/AI-robot/tree/master/bin/images/AI-robot3.PNG
-[AI-robot4]: https://github.com/juanluisrto/AI-robot/tree/master/bin/images/AI-robot4.PNG
-[AI-robot5]: https://github.com/juanluisrto/AI-robot/tree/master/bin/images/AI-robot5.PNG
-[AI-robot6]: https://github.com/juanluisrto/AI-robot/tree/master/bin/images/AI-robot6.PNG
+[AI-robot1]: https://raw.githubusercontent.com/juanluisrto/AI-robot/master/bin/images/AI-robot1.PNG 
+[AI-robot2]: https://raw.githubusercontent.com/juanluisrto/AI-robot/master/bin/images/AI-robot2.PNG
+[AI-robot3]: https://raw.githubusercontent.com/juanluisrto/AI-robot/master/bin/images/AI-robot3.PNG
+[AI-robot4]: https://raw.githubusercontent.com/juanluisrto/AI-robot/master/bin/images/AI-robot4.PNG
+[AI-robot5]: https://raw.githubusercontent.com/juanluisrto/AI-robot/master/bin/images/AI-robot5.PNG
+[AI-robot6]: https://raw.githubusercontent.com/juanluisrto/AI-robot/master/bin/images/AI-robot6.PNG
