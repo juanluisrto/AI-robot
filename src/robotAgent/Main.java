@@ -1,20 +1,18 @@
 package robotAgent;
-import environment.Block;
 import environment.Map;
 
 public class Main {
 	public static void main(String[] args) {
-		int width =8;
-		int length = 6;
-		Map map = new Map(width,length);
+
+		Map map = new Map();
 		
-		int x= width/2;
-		int y= length/2;
+		int x= map.width/2;
+		int y= map.length/2;
 		
 		boolean keepRuning = true;
-		for(int i=0 ; i< length && keepRuning; i++){
-			for(int j=0; j< width && keepRuning; j++){
-				if(map.getBlock(j, i)==Block.TypeOfBlock.FREE){
+		for(int i=0 ; i< map.length && keepRuning; i++){
+			for(int j=0; j< map.width && keepRuning; j++){
+				if(map.getBlock(j, i)==Map.TypeOfBlock.FREE){
 					x=j;
 					y=i;
 					keepRuning=false;
@@ -22,8 +20,32 @@ public class Main {
 			}
 		}
 		
+		Thread thread = new Thread(new MapPainter(map));
+		thread.start();
+		
 		AgentsInterfaceForMap agentsInterface = new AgentsInterfaceForMap(map,x,y);
 		Agent agent = new Agent(agentsInterface);
 		agent.solve();		
+	}
+	
+	public static class MapPainter implements Runnable {
+		Map map;
+		public MapPainter(Map map) {
+			this.map = map;
+		}
+		
+		@Override
+		public void run() {
+			while (true){	
+				map.paintObst();
+
+				map.paintVisited();
+				
+				map.paintAgent();
+				map.v.actualizaFotograma();
+				/*try {m.v.wait(l);}
+				catch (Exception e){*/
+			}
+		}
 	}
 }

@@ -1,7 +1,6 @@
 package robotAgent;
 
 import environment.Map;
-import environment.Block;
 
 public class AgentsInterfaceForMap {
 	Map map;
@@ -12,6 +11,9 @@ public class AgentsInterfaceForMap {
 		this.map = map;
 		this.xOfAgent = x;
 		this.yOfAgent = y;
+		map.blocks[x][y].visited=true;
+		Integer[] pos = { x, y };
+		map.visitedBlocks.add(pos);
 		map.xOfAgent=x;
 		map.yOfAgent=y;
 	}
@@ -19,36 +21,49 @@ public class AgentsInterfaceForMap {
 	public void goRight(){
 		this.xOfAgent++;
 		map.xOfAgent++;
+		map.blocks[xOfAgent][yOfAgent].visited=true;
+		Integer[] pos = { xOfAgent, yOfAgent };
+		map.visitedBlocks.add(pos);
 	}
 	
 	public void goLeft(){
 		this.xOfAgent--;
 		map.xOfAgent--;
+		map.blocks[xOfAgent][yOfAgent].visited=true;
+		Integer[] pos = { xOfAgent, yOfAgent };
+		map.visitedBlocks.add(pos);
 	}
 	
 	public void goUp(){
 		this.yOfAgent++;
 		map.yOfAgent++;
+		map.blocks[xOfAgent][yOfAgent].visited=true;
+		Integer[] pos = { xOfAgent, yOfAgent };
+		map.visitedBlocks.add(pos);
 	}
 	
 	public void goDown(){
 		this.yOfAgent--;
 		map.yOfAgent--;
+		map.blocks[xOfAgent][yOfAgent].visited=true;
+		Integer[] pos = { xOfAgent, yOfAgent };
+		map.visitedBlocks.add(pos);
+
 	}	
 	
-	public Block.TypeOfBlock seeRight(){
+	public Map.TypeOfBlock seeRight(){
 		return map.getRightBlock(xOfAgent, yOfAgent);
 	}
-	public Block.TypeOfBlock seeLeft(){
+	public Map.TypeOfBlock seeLeft(){
 		return map.getLeftBlock(xOfAgent, yOfAgent);
 	}
-	public Block.TypeOfBlock seeUp(){
+	public Map.TypeOfBlock seeUp(){
 		return map.getUpBlock(xOfAgent, yOfAgent);
 	}
-	public Block.TypeOfBlock seeDown(){
+	public Map.TypeOfBlock seeDown(){
 		return map.getDownBlock(xOfAgent, yOfAgent);
 	}
-	public Block.TypeOfBlock seeCurrent(){
+	public Map.TypeOfBlock seeCurrent(){
 		return map.getBlock(xOfAgent, yOfAgent);
 	}
 	
