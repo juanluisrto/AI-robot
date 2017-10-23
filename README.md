@@ -1,8 +1,8 @@
 # AI-robot
 
-##Project for the ID1214 Artificial Intelligence course at KTH
+## Project for the ID1214 Artificial Intelligence course at KTH
 
-######Authors: Nawfal AlShammari, Juan Luis Ruiz-Tagle Oriol
+###### Authors: Nawfal AlShammari, Juan Luis Ruiz-Tagle Oriol
 
 The program creates a map and randomly plots obstacles into it. A robot is spawned with the goal to visit 
 all the reachable cells in the map in an efficient way. When it is done with all of them it will know and will stop running.
@@ -20,17 +20,17 @@ __Customizations__
 
 __Example pictures__
 
-####Example 1
+#### Example 1
 ![alt text][AI-robot1]
 
 ![alt tag][AI-robot2]
 
-####Example 2
+#### Example 2
 ![alt text][AI-robot3]
 
 ![alt text][AI-robot4]
 
-####Maze
+#### Maze
 ![alt text][AI-robot5]
 
 ![alt text][AI-robot6]
